@@ -6,8 +6,8 @@ RSpec.feature "タスク管理機能", type: :feature do
   # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
   scenario "タスク一覧のテスト" do
     # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
-    Task.create!(title: 'test_task_01', content: 'testtesttest')
-    Task.create!(title: 'test_task_02', content: 'samplesample')
+    Task.create!(name: 'test_task_01', content: 'postpostpost')
+    Task.create!(name: 'test_task_02', content: 'sample2sample2')
 
     # tasks_pathにvisitする（タスク一覧ページに遷移する）
     visit tasks_path
@@ -19,8 +19,8 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
     # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
-    expect(page).to have_content 'testtesttest'
-    expect(page).to have_content 'samplesample'
+    expect(page).to have_content 'postpostpost'
+    expect(page).to have_content 'sample2sample2'
   end
 
   scenario "タスク作成のテスト" do
@@ -41,9 +41,26 @@ RSpec.feature "タスク管理機能", type: :feature do
     # 5.タスク詳細ページに、テストコードで作成したはずのデータ（記述）がhave_contentされているか（含まれているか）を確認（期待）するコードを書く
     expect(page).to have_content 'Example Name'
     expect(page).to have_content 'Example content'
+
   end
 
   scenario "タスク詳細のテスト" do
+    # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
+    Task.create!(name: 'test_task_03', content: 'test1test1test1')
 
+
+    # task_pathにvisitする（タスク詳細ページに遷移する）
+    visit task_path(task.id)
+
+    click_on '詳細を確認する'
+
+    # 実際の状況を確認したい箇所にさし挟む。
+    # 例の場合、「タスクが保存された後、タスク一覧ページに行くとどうなるのか」を確認するため
+    # visit tasks_path の直後に save_and_open_page を挟んでいる
+    save_and_open_page
+
+    # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
+    # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
+    expect(page).to have_content 'test1test1test1'
   end
 end
