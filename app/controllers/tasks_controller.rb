@@ -12,10 +12,15 @@ class TasksController < ApplicationController
     redirect new_task_path
   end
 
+  def show
+
+  end
+
+
 
   private
 
-  def tesk_params
+  def task_params
     params_require(:task).permit(:name, :content)
   end
 end
