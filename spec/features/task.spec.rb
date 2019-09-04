@@ -12,6 +12,11 @@ RSpec.feature "タスク管理機能", type: :feature do
     # tasks_pathにvisitする（タスク一覧ページに遷移する）
     visit tasks_path
 
+    # 実際の状況を確認したい箇所にさし挟む。
+    # 例の場合、「タスクが保存された後、タスク一覧ページに行くとどうなるのか」を確認するため
+    # visit tasks_path の直後に save_and_open_page を挟んでいる
+    save_and_open_page
+
     # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
     # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
     expect(page).to have_content 'testtesttest'
