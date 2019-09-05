@@ -4,4 +4,15 @@ ja:
       title: タスク一覧
       name: タスク名
       content: タスク詳細
-    
+    show:
+      title: タスク詳細
+      name: タスク名
+      content: タスク詳細
+    new:
+      title: タスクを作成する
+    edit:
+      title: タスクを編集する
+    form:
+      name: タスク名
+      content: タスク詳細
+      
