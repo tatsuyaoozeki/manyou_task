@@ -1,0 +1,12 @@
+---
+ja:
+  activerecord:
+    models:
+      task: タスク
+    attributes:
+      task:
+        name: タスク名
+        content: タスク詳細
+        id: ID
+        created_at: 登録日時
+        update_at: 更新日時
