@@ -4,15 +4,21 @@ ja:
       title: タスク一覧
       name: タスク名
       content: タスク詳細
+      show_task: 詳細を確認する
+      show_edit: 編集をする
+      show_destroy: 削除する
     show:
       title: タスク詳細
       name: タスク名
       content: タスク詳細
     new:
       title: タスクを作成する
+      # name: タスク名
+      # content: タスク詳細
     edit:
       title: タスクを編集する
+      # name: タスク名
+      # content: タスク詳細
     form:
       name: タスク名
       content: タスク詳細
-      

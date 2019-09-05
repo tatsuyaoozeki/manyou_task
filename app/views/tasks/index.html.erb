@@ -9,9 +9,9 @@
   <tr>
     <td><%= task.name %></td>
     <td><%= task.content %></td>
-    <td id="show"><%= link_to '詳細を確認する', task_path(task.id) %></td>
-    <td><%= link_to 'タスクを編集する', edit_task_path(task.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'ブログを削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+    <td id="show"><%= link_to t('.show_task'), task_path(task.id) %></td>
+    <td><%= link_to t('.show_edit'), edit_task_path(task.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to t('.show_destroy'), task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
   <% end %>
 </table>
