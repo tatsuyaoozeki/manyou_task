@@ -49,13 +49,10 @@ RSpec.feature "タスク管理機能", type: :feature do
     visit tasks_path
     page.first("#show").click
 
-    # click_on 'Show'
-
-    save_and_open_page
-
     # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
     # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
     expect(page).to have_content 'test_task_03'
     expect(page).to have_content 'test1test1test1'
+    save_and_open_page
   end
 end
