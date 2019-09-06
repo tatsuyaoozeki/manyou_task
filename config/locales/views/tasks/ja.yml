@@ -1,0 +1,21 @@
+ja:
+  tasks:
+    index:
+      title: タスク一覧
+      name: タスク名
+      content: タスク詳細
+      show_task: 詳細を確認する
+      show_edit: 編集をする
+      show_destroy: 削除する
+      create_task: 新しくタスクを作成する
+    show:
+      title: タスク詳細
+      name: タスク名
+      content: タスク詳細
+    new:
+      title: タスクを作成する
+    edit:
+      title: タスクを編集する
+    form:
+      name: タスク名
+      content: タスク詳細

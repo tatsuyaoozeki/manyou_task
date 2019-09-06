@@ -1,0 +1,27 @@
+---
+ja:
+  activerecord:
+    models:
+      task: タスク
+    attributes:
+      task:
+        name: タスク名
+        content: タスク詳細
+        id: ID
+        created_at: 登録日時
+        update_at: 更新日時
+    errors:
+      models:
+        task:
+          attributes:
+            name:
+              blank: が記入されていません
+            content:
+              blank: が記入されていません
+  tasks:
+    create:
+      success: 登録しました!
+    update:
+      success: 編集しました!
+    destroy:
+      success: 削除しました!
