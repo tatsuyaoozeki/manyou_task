@@ -8,6 +8,7 @@ ja:
       show_edit: 編集をする
       show_destroy: 削除する
       create_task: 新しくタスクを作成する
+      created_at: 作成日時
     show:
       title: タスク詳細
       name: タスク名
