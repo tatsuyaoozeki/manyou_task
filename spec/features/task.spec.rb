@@ -4,23 +4,19 @@ require 'rails_helper'
 # このRSpec.featureの右側に、「タスク管理機能」のように、テスト項目の名称を書きます（do ~ endでグループ化されています）
 RSpec.feature "タスク管理機能", type: :feature do
   # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
-  scenario "タスク一覧のテスト" do
+  background do
     # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
-    Task.create!(name: 'test_task_01', content: 'postpostpost')
-    Task.create!(name: 'test_task_02', content: 'sample2sample2')
-
+    FactoryBot.create(:task)
+    FactoryBot.create(:second_task)
+  end
+  scenario "タスク一覧のテスト" do
     # tasks_pathにvisitする（タスク一覧ページに遷移する）
     visit tasks_path
 
-    # 実際の状況を確認したい箇所にさし挟む。
-    # 例の場合、「タスクが保存された後、タスク一覧ページに行くとどうなるのか」を確認するため
-    # visit tasks_path の直後に save_and_open_page を挟んでいる
-
-
     # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
     # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
-    expect(page).to have_content 'postpostpost'
-    expect(page).to have_content 'sample2sample2'
+    expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
+    expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
   end
 
   scenario "タスク作成のテスト" do
@@ -31,28 +27,31 @@ RSpec.feature "タスク管理機能", type: :feature do
     # タスクのタイトルと内容をそれぞれfill_in（入力）する
     # 2.ここに「タスク名」というラベル名の入力欄に内容をfill_in（入力）する処理を書く
     # 3.ここに「タスク詳細」というラベル名の入力欄に内容をfill_in（入力）する処理を書く
-    fill_in 'Name', with: 'Example Name'
-    fill_in 'Content', with: 'Example content'
+    fill_in 'タスク名', with: 'Factoryで作ったデフォルトのタイトル１'
+
+    fill_in 'タスク詳細', with: 'Factoryで作ったデフォルトのコンテント１'
     # 「登録する」というvalue（表記文字）のあるボタンをclick_onする（クリックする）
     # 4.「登録する」というvalue（表記文字）のあるボタンをclick_onする（クリックする）する処理を書く
-    click_on 'Create Task'
+    click_on '登録する'
     # clickで登録されたはずの情報が、タスク詳細ページに表示されているかを確認する
     # （タスクが登録されたらタスク詳細画面に遷移されるという前提）
     # 5.タスク詳細ページに、テストコードで作成したはずのデータ（記述）がhave_contentされているか（含まれているか）を確認（期待）するコードを書く
-    expect(page).to have_content 'Example Name'
-    expect(page).to have_content 'Example content'
+    expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
+    expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
   end
 
   scenario "タスク詳細のテスト" do
-    # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
     Task.create!(name: 'test_task_03', content: 'test1test1test1')
+
     visit tasks_path
     page.first("#show").click
 
-    # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
-    # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
     expect(page).to have_content 'test_task_03'
     expect(page).to have_content 'test1test1test1'
     save_and_open_page
+  end
+
+  scenario "タスクが作成日時の降順に並んでいるかのテスト" do
+    
   end
 end
