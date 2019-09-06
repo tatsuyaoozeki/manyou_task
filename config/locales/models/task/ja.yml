@@ -15,9 +15,9 @@ ja:
         task:
           attributes:
             name:
-              blank: タスク名が記入されていません
+              blank: が記入されていません
             content:
-              blank: タスク詳細が記入されていません
+              blank: が記入されていません
   tasks:
     create:
       success: 登録しました!
