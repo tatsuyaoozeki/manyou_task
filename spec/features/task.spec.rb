@@ -6,8 +6,8 @@ RSpec.feature "タスク管理機能", type: :feature do
   # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
   background do
     # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
-    Task.create!(title: 'test_task_01', content: 'testtesttest')
-    Task.create!(title: 'test_task_02', content: 'mofmofmofmof')
+    FactoryBot.create(:task)
+    FactoryBot.create(:second_task)
   end
   scenario "タスク一覧のテスト" do
     # tasks_pathにvisitする（タスク一覧ページに遷移する）
