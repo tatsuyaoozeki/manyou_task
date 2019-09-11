@@ -42,14 +42,14 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "タスク詳細のテスト" do
-    Task.create!(name: 'test_task_03', content: 'test1test1test1', deadline: '2019.09.20.11.11')
+    Task.create!(name: 'Factoryで作ったデフォルトのタイトル１', content: 'Factoryで作ったデフォルトのコンテント１', deadline: '2019.09.20.11.11')
 
     visit tasks_path
     page.first("#show").click
 
-    expect(page).to have_content 'test_task_03'
-    expect(page).to have_content 'test1test1test1'
-    save_and_open_page
+    expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
+    expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
+
   end
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
@@ -62,5 +62,6 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
     expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
+    save_and_open_page
   end
 end
