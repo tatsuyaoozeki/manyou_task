@@ -1,13 +1,20 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def indexz
     if params[:sort_expired]
       @tasks = Task.all.order(deadline: :desc)
+    elsif params[:search]
+      @tasks = Task.where("name LIKE ?", "%#{ params[:name_key] }%")
     else
       @tasks = Task.all.order(created_at: :desc)
     end
   end
+
+  # def search
+  #   @tasks = Task.where('year LIKE ?', "%#{params[:year]}%")
+  #   render :index
+  # end
 
   def new
     @task = Task.new

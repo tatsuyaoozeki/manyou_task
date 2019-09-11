@@ -1,5 +1,15 @@
 <h1><%= t('.title') %></h1>
 <p><%= notice %></p>
+<%= form_with( model: Task.new, method: :get, local: true ) do |f| %>
+  <%= f.label :name_search, 'タスク名検索' %>
+  <%= f.text_field :search, value: 'true' %>
+
+  <%= f.label :status_search, '状態検索' %>
+  <%= f.text_field :search, value: 'true' %>
+
+  <%= f.submit "検索する" %>
+<% end %>
+
 <table>
   <tr>
     <th><%= t('.name') %></th>
