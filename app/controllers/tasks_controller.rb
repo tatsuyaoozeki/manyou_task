@@ -1,19 +1,24 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  def indexz
+  def index
+
     if params[:sort_expired]
       @tasks = Task.all.order(deadline: :desc)
     elsif params[:search]
-      @tasks = Task.where("name LIKE ?", "%#{ params[:name_key] }%")
+      @tasks = Task.where("name LIKE ?", "%#{ params[:search] }%")
+      # @tasks = Task.where("name LIKE ? AND status LIKE ?", "%#{ params[:search] }%")
+    elsif params[:search] && params[:search][:status_search]
+      @tasks = Task.where(:search).where("name LIKE ? AND status LIKE ?", "%#{ params[:search] }%", "%#{ params[:search][:status] }%")
     else
       @tasks = Task.all.order(created_at: :desc)
+      # render :index
     end
   end
 
-  # def search
-  #   @tasks = Task.where('year LIKE ?', "%#{params[:year]}%")
-  #   render :index
+  # def list
+  #   @task = Task.all
+  #   @task_label = {0: '未着手', 1: '作業中', 2: '完了'}
   # end
 
   def new
@@ -51,7 +56,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content, :deadline)
+    params.require(:task).permit(:name, :content, :deadline, :status, :search)
   end
 
   def set_task

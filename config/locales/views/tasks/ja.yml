@@ -9,6 +9,9 @@ ja:
       show_destroy: 削除する
       create_task: 新しくタスクを作成する
       created_at: 作成日時
+      status: 進捗
+      deadline_sort: 終了期限でソート
+      search: 検索する
     show:
       title: タスク詳細
       name: タスク名
