@@ -5,7 +5,8 @@ class TasksController < ApplicationController
     if params[:sort_expired]
       @tasks = Task.all.order(deadline: :desc)
     elsif params[:name]
-      @tasks = Task.where("name LIKE ?", "%#{ params[:name] }%").where('status::text LIKE ?', "%#{params[:status]}%")
+      @tasks = Task.task(params)
+      # .where("name LIKE ?", "%#{ params[:name] }%").where('status::text LIKE ?', "%#{params[:status]}%")
     else
       @tasks = Task.all.order(created_at: :desc)
     end
