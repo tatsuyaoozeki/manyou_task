@@ -1,13 +1,11 @@
 <h1><%= t('.title') %></h1>
 <p><%= notice %></p>
 
-
-<%= form_tag(root_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= select_tag :status_search, options_for_select([["未着手", 0], ["作業中", 1], ["完了", 2]]) %>
-  <%= submit_tag 'Search', :name => nil, :status => nil %>
+<%= form_tag(root_path, :method => 'get') do %>
+  <%= text_field_tag :name %>
+  <%= select_tag :status, options_for_select([["", ""], ["未着手", "0"], ["作業中", "1"], ["完了", "2"]]) %>
+  <%= submit_tag 'search', :name => nil, :status => nil %>
 <% end %>
-
 
 <table>
   <tr>
