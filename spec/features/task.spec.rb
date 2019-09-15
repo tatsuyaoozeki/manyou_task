@@ -62,6 +62,16 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
     expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
+    # save_and_open_page
+  end
+
+  scenario "viewにてタスクが絞り込めるかのテスト" do
+    visit tasks_path
+    fill_in 'タスク名', with: 'Factoryで作ったデフォルトのタイトル１'
+    select '未着手', from: '未着手'
+    click_button 'search'
     save_and_open_page
+    expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
+    expect(page).to have_content '未着手'
   end
 end
