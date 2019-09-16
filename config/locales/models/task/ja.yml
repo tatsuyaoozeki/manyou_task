@@ -13,6 +13,9 @@ ja:
         deadline: 終了期限
         status: 進捗
         priority: 優先度
+        high: 高
+        medium: 中
+        low: 低
     errors:
       models:
         task:
@@ -28,3 +31,4 @@ ja:
       success: 編集しました!
     destroy:
       success: 削除しました!
+  
