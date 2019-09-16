@@ -29,7 +29,7 @@
   </div>
   <div class="task_priority">
     <%= f.label :priority %>
-      <%= f.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]} %>
+    <%= f.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]} %>
   </div>
   <%= f.submit %>
 <% end %>

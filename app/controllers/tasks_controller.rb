@@ -2,8 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:sort_expired]
+    if params[:sort_expired] == 'true'
       @tasks = Task.all.order(deadline: :desc)
+    elsif params[:sort_priority] == 'true'
+      @tasks = Task.all.order(priority: :asc)
     elsif params[:name]
       @tasks = Task.task(params)
       # .where("name LIKE ?", "%#{ params[:name] }%").where('status::text LIKE ?', "%#{params[:status]}%")

@@ -4,8 +4,8 @@
 <%= form_tag(root_path, :method => 'get') do %>
   <%= text_field_tag :name %>
   <%= select_tag :status, options_for_select([["", ""], ["未着手", "0"], ["作業中", "1"], ["完了", "2"]]) %>
-  <%= select_tag :priority, options_for_select([["", ""], ['高', 0], ['中', 1], ['低', 2]]) %>
-  <%= submit_tag 'search', :name => nil, :status => nil, :priority => nil %>
+  <%# <%= select_tag :priority, options_for_select([["", ""], ['高', 0], ['中', 1], ['低', 2]]) %>
+  <%= submit_tag 'search', :name => nil, :status => nil %>
 <% end %>
 
 <table>
@@ -14,7 +14,7 @@
     <th><%= t('.content') %></th>
     <th><%= t('.created_at') %></th>
     <th><%= t('.status') %></th>
-    <th><%= t('.priority') %></th>
+    <th><%= link_to t('.priority'), tasks_path(sort_priority:"true") %></th>
     <th><%= link_to t('.deadline_sort'), tasks_path(sort_expired:"true") %></th>
   </tr>
   <% @tasks.each do |task| %>
