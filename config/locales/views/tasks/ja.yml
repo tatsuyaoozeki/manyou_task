@@ -12,6 +12,7 @@ ja:
       status: 進捗
       deadline_sort: 終了期限でソート
       search: 検索する
+      priority: 優先度
     show:
       title: タスク詳細
       name: タスク名
