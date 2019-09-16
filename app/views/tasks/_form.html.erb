@@ -23,5 +23,9 @@
     <%= f.label :deadline %>
     <%= f.datetime_select :deadline %>
   </div>
+  <div class="task_status">
+    <%= f.label :status %>
+    <%= f.select :status, [["", ""], ["未着手", "未着手"], ["作業中", "作業中"], ["完了", "完了"]] %>
+  </div>
   <%= f.submit %>
 <% end %>

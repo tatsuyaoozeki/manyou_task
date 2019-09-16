@@ -10,6 +10,9 @@ ja:
         id: ID
         created_at: 作成日時
         update_at: 更新日時
+        deadline: 終了期限
+        status: 進捗
+        priority: 優先度
     errors:
       models:
         task:
