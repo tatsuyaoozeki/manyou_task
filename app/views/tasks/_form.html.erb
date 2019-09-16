@@ -25,11 +25,11 @@
   </div>
   <div class="task_status">
     <%= f.label :status %>
-    <%= f.select :status, [["", ""], ["未着手", "未着手"], ["作業中", "作業中"], ["完了", "完了"]] %>
+    <%= f.select :status, Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]} %>
   </div>
   <div class="task_priority">
     <%= f.label :priority %>
-    <%= f.select :priority, Task.priorities.keys.to_a, {} %>
+      <%= f.select :priority, Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]} %>
   </div>
   <%= f.submit %>
 <% end %>

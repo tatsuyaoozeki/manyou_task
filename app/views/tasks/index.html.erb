@@ -22,8 +22,8 @@
     <td><%= task.name %></td>
     <td><%= task.content %></td>
     <td><%= task.created_at. strftime("%Y-%m-%d%H:%M") %></td>
-    <td><%= task.status %></td>
-    <td><%= task.priority %></td>
+    <td><%= task.status_i18n %></td>
+    <td><%= task.priority_i18n %></td>
     <td><%= task.deadline. strftime("%Y-%m-%d%H:%M") %></td>
     <td id="show"><%= link_to t('.show_task'), task_path(task.id) %></td>
     <td><%= link_to t('.show_edit'), edit_task_path(task.id), data: { confirm: '本当に編集していいですか？' } %></td>
