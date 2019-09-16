@@ -4,7 +4,6 @@
 <%= form_tag(root_path, :method => 'get') do %>
   <%= text_field_tag :name %>
   <%= select_tag :status, options_for_select([["", ""], ["未着手", "0"], ["作業中", "1"], ["完了", "2"]]) %>
-  <%# <%= select_tag :priority, options_for_select([["", ""], ['高', 0], ['中', 1], ['低', 2]]) %>
   <%= submit_tag 'search', :name => nil, :status => nil %>
 <% end %>
 
@@ -30,6 +29,6 @@
     <td><%= link_to t('.show_destroy'), task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
   <% end %>
-</table>
+</tab
 
 <%= link_to t('.create_task'), new_task_path %>

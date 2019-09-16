@@ -8,6 +8,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
     FactoryBot.create(:task)
     FactoryBot.create(:second_task)
+    FactoryBot.create(:third_task)
   end
   scenario "タスク一覧のテスト" do
     # tasks_pathにvisitする（タスク一覧ページに遷移する）
@@ -58,7 +59,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスクが終了期限の降順のテスト" do
     visit tasks_path
-    click_on '終了期限でソートする'
+    click_on '終了期限でソート'
 
     expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
     expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
@@ -67,8 +68,8 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "viewにてタスクが絞り込めるかのテスト" do
     visit tasks_path
-    fill_in 'タスク名', with: 'Factoryで作ったデフォルトのタイトル１'
-    select '未着手', from: '未着手'
+    fill_in 'name', with: 'Factoryで作ったデフォルトのタイトル１'
+    select '未着手'
     click_button 'search'
 
     expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
