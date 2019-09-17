@@ -12,6 +12,13 @@ ja:
       status: 進捗
       deadline_sort: 終了期限でソート
       search: 検索する
+      priority: 優先度
+      yet: 未着手
+      working: 作業中
+      completed: 完了
+      high: 高
+      medium: 中
+      low: 低
     show:
       title: タスク詳細
       name: タスク名

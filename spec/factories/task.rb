@@ -7,7 +7,8 @@ FactoryBot.define do
     name { 'Factoryで作ったデフォルトのタイトル１' }
     content { 'Factoryで作ったデフォルトのコンテント１' }
     deadline { '2019.09.20 22:47'}
-    status { '未着手' }
+    status { "yet" }
+    priority { "high" }
   end
 
   # 作成するテストデータの名前を「second_task」とします
@@ -16,13 +17,15 @@ FactoryBot.define do
     name { 'Factoryで作ったデフォルトのタイトル２' }
     content { 'Factoryで作ったデフォルトのコンテント２' }
     deadline { '2019.09.20 19:47'}
-    status { '作業中' }
+    status { "working" }
+    priority { "medium" }
   end
 
   factory :third_task, class: Task do
     name { 'Factoryで作ったデフォルトのタイトル２' }
     content { 'Factoryで作ったデフォルトのコンテント２' }
     deadline { '2019.09.20 19:47'}
-    status { '完了' }
+    status { "completed" }
+    priority { "low" }
   end
 end

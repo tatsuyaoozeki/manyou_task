@@ -13,6 +13,9 @@ ja:
         deadline: 終了期限
         status: 進捗
         priority: 優先度
+        high: 高
+        medium: 中
+        low: 低
     errors:
       models:
         task:
@@ -21,6 +24,16 @@ ja:
               blank: が記入されていません
             content:
               blank: が記入されていません
+  enums:
+    task:
+      status:
+        yet: 未着手
+        working: 作業中
+        completed: 完了
+      priority:
+        high: 高
+        medium: 中
+        low: 低
   tasks:
     create:
       success: 登録しました!
