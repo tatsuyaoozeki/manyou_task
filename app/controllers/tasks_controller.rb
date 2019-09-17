@@ -3,14 +3,14 @@ class TasksController < ApplicationController
   PER = 8
   def index
     if params[:sort_expired] == 'true'
-      @tasks = Task.order(deadline: :desc).page(params[:page]).per(PER)
+      @tasks = Task.order(deadline: :desc)
     elsif params[:sort_priority] == 'true'
       @tasks = Task.all.order(priority: :asc)
     elsif params[:name]
       @tasks = Task.task(params)
       # .where("name LIKE ?", "%#{ params[:name] }%").where('status::text LIKE ?', "%#{params[:status]}%")
     else
-      @tasks = Task.all.order(created_at: :desc)
+      @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(PER)
     end
   end
 
