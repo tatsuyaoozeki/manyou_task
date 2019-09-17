@@ -77,13 +77,10 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "タスクが優先度の高い順に並び替えのテスト" do
-    visit tasks_path
-    click_on '優先度'
-
+    visit tasks_path(sort_priority: 'true')
+    all('table td')[6].click_link '詳細を確認する'
     expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
     expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
     save_and_open_page
   end
-
-
 end

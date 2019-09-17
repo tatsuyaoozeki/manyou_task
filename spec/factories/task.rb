@@ -8,7 +8,7 @@ FactoryBot.define do
     content { 'Factoryで作ったデフォルトのコンテント１' }
     deadline { '2019.09.20 22:47'}
     status { "yet" }
-    priority { 'high' }
+    priority { "high" }
   end
 
   # 作成するテストデータの名前を「second_task」とします
@@ -18,14 +18,14 @@ FactoryBot.define do
     content { 'Factoryで作ったデフォルトのコンテント２' }
     deadline { '2019.09.20 19:47'}
     status { "working" }
-    priority { 'medium' }
+    priority { "medium" }
   end
 
   factory :third_task, class: Task do
     name { 'Factoryで作ったデフォルトのタイトル２' }
     content { 'Factoryで作ったデフォルトのコンテント２' }
     deadline { '2019.09.20 19:47'}
-    status { 'completed' }
-    priority { 'low' }
+    status { "completed" }
+    priority { "low" }
   end
 end
