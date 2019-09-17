@@ -23,6 +23,17 @@ ja:
       title: タスク詳細
       name: タスク名
       content: タスク詳細
+      deadline_sort: 終了期限
+      created_at: 作成日時
+      search: 検索する
+      status: 進捗
+      yet: 未着手
+      working: 作業中
+      completed: 完了
+      priority: 優先度
+      high: 高
+      medium: 中
+      low: 低
     new:
       title: タスクを作成する
     edit:
