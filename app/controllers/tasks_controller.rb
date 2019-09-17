@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  PER = 8
   def index
     if params[:sort_expired] == 'true'
-      @tasks = Task.all.order(deadline: :desc)
+      @tasks = Task.order(deadline: :desc).page(params[:page]).per(PER)
     elsif params[:sort_priority] == 'true'
       @tasks = Task.all.order(priority: :asc)
     elsif params[:name]
