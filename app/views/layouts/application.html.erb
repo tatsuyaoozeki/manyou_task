@@ -17,6 +17,9 @@
           <h1>Tasksu</h1>
         </div>
       </header>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
 
       <footer>
         <p>Tasksu ©︎2019</p>
