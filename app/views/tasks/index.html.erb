@@ -1,9 +1,8 @@
 <div class="search_form">
   <%= form_tag(root_path, :method => 'get') do %>
-    <%= t('.name') %>
-    <%= text_field_tag :name %>
-    <%= t('.status') %>
-    <%= select_tag :status, options_for_select([["", ""], ["未着手", "0"], ["作業中", "1"], ["完了", "2"]]) %>
+    <%= text_field_tag :name, params[:search], :placeholder => "タスク名", class: "form-control", id: "sbox1" %>
+    <div class="status"><%= t('.status') %></div>
+    <%= select_tag :status, options_for_select([["", ""], ["未着手", "0"], ["作業中", "1"], ["完了", "2"]]), class: "status_sel" %>
     <%= submit_tag 'search', :name => nil, :status => nil %>
   <% end %>
 </div>
