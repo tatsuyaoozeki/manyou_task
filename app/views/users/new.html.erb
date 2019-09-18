@@ -1,3 +1,15 @@
+<h1>ユーザ新規登録</h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model: @user, local: true) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -10,6 +22,6 @@
 
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
-  
+
   <%= f.submit "Create user"%>
 <% end %>
