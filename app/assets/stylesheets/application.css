@@ -14,3 +14,58 @@
  *= require_tree .
  *= require_self
  */
+
+ html,
+ body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+ }
+
+.container-fluid{
+  padding: 0;
+}
+
+ .header {
+   background-color: #a83232;
+   height: 7em;
+   color: #fff;
+   /* padding-left: 10%; */
+   width: 100%
+ }
+
+ .header h1 {
+   font-weight: bold;
+   padding: 0.5em;
+ }
+
+ .log-link {
+   background-color: #a83232;
+   padding: 0;
+   color: #fff;
+   width: 100%;
+ }
+
+
+
+ footer {
+   position: fixed;
+   top: auto;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 2em;
+   color: #ccc;
+ }
+
+ footer p {
+   vertical-align: bottom;
+   text-align: center;
+ }
+
+ .clearfix {
+   content: "";
+   display: block;
+   clear: both;
+ }

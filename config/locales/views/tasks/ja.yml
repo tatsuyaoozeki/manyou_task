@@ -1,7 +1,7 @@
 ja:
   tasks:
     index:
-      title: タスク一覧
+      index_title: タスク一覧
       name: タスク名
       content: タスク詳細
       show_task: 詳細を確認する
@@ -35,9 +35,9 @@ ja:
       medium: 中
       low: 低
     new:
-      title: タスクを作成する
+      new_title: タスクを作成する
     edit:
-      title: タスクを編集する
+      edit_title: タスクを編集する
     form:
       name: タスク名
       content: タスク詳細
