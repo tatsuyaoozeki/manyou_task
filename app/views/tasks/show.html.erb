@@ -1,3 +1,14 @@
-<h1><%= t('.title') %></h1>
-<p><%= t('.name') %>:<%= @task.name %></p>
-<p><%= t('.content') %>:<%= @task.content %></p>
+<div class="log_in">
+  <div class="signin_container">
+    <div class="form-signin">
+      <h1 class="h3 mb-3 font-weight-bold"></h1>
+      <h2><%= t('.title') %></h2>
+      <p><%= t('.name') %>:<%= @task.name %></p>
+      <p><%= t('.content') %>:<%= @task.content %></p>
+      <p><%= t('.status') %>:<%= @task.status_i18n %></p>
+      <p><%= t('.priority') %>:<%= @task.priority_i18n %></p>
+      <p><%= t('.created_at') %>:<%= l @task.created_at %></p>
+      <p><%= t('.deadline_sort') %>:<%= l @task.deadline %></p>
+    </div>
+  </div>
+</div>
