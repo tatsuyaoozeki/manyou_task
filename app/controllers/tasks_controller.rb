@@ -52,11 +52,6 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice: t('.success')
   end
 
-  def confirm
-    @task = current_user.tasks.build(task_params)
-    render :new if @task.invalid?
-  end
-
   private
 
   def task_params
