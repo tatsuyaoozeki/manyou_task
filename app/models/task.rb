@@ -6,7 +6,6 @@ class Task < ApplicationRecord
 
   belongs_to :user
 
-
   scope :task, -> (params) {where('(name LIKE ?) AND (status::text LIKE ?)',
                                   "%#{params[:name]}%",
                                   "%#{params[:status]}%"
