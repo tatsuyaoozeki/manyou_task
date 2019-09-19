@@ -9,6 +9,8 @@ FactoryBot.define do
     deadline { '2019.09.20 22:47'}
     status { "yet" }
     priority { "high" }
+    user_id {1}
+    user
   end
 
   # 作成するテストデータの名前を「second_task」とします
@@ -19,6 +21,8 @@ FactoryBot.define do
     deadline { '2019.09.20 19:47'}
     status { "working" }
     priority { "medium" }
+    user_id {2}
+    user
   end
 
   factory :third_task, class: Task do
@@ -27,5 +31,7 @@ FactoryBot.define do
     deadline { '2019.09.20 19:47'}
     status { "completed" }
     priority { "low" }
+    user_id {3}
+    user
   end
 end
