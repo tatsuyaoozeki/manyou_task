@@ -1,8 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :require_task
+  # before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
   PER = 8
 
   def index
+
     if params[:sort_expired]
       @tasks = Task.order(deadline: :desc)
     elsif params[:sort_priority]
@@ -13,6 +16,7 @@ class TasksController < ApplicationController
     else
       @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(PER)
     end
+    @tasks = Task.where(user_id: current_user.id)
     @task = @tasks.page(params[:page]).per(PER)
   end
 
@@ -21,7 +25,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to tasks_path, notice: t('.success')
     else
@@ -57,4 +61,18 @@ class TasksController < ApplicationController
   def set_task
     @task = Task.find(params[:id])
   end
+
+  def require_task
+    unless logged_in?
+      redirect_to new_session_path, notice: 'ログインしてください'
+    end
+  end
+
+  # def ensure_correct_user
+  #   @task = Task.find_by(id: params[:id])
+  #   if @task.user_id != @current_user.id
+  #     flash[:notice] = "権限がありません"
+  #     redirect_to tasks_path
+  #   end
+  # end
 end
