@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "管理者機能", type: :feature do
   background do
     FactoryBot.create(:user)
+
   end
 
   before do
@@ -18,11 +19,13 @@ RSpec.feature "管理者機能", type: :feature do
   end
 
   scenario "ユーザー一覧のテスト" do
+    FactoryBot.create(:second_user)
+    FactoryBot.create(:third_user)
     visit admin_users_path
 
 
     expect(page).to have_content 'ユーザーA'
-
+    save_and_open_page
   end
 
   scenario "ユーザー作成のテスト" do
@@ -44,7 +47,7 @@ RSpec.feature "管理者機能", type: :feature do
 
   scenario "ユーザー編集のテスト" do
     visit admin_users_path
-    click_link '編集'
+    click_link "編集"
     fill_in 'user_name', with: 'テストユーザー１'
     fill_in 'user_email', with: 'test1@test.com'
     fill_in 'user_password', with: 'aaaaaa'
@@ -62,7 +65,6 @@ RSpec.feature "管理者機能", type: :feature do
     click_on 'Create user'
     expect(page).to have_text 'テストユーザー１'
     click_link '削除', match: :first
-    save_and_open_page
     expect(page).to have_text 'ユーザーA'
   end
 end
