@@ -11,4 +11,5 @@ RSpec.feature "ユーザー機能", type: :feature do
     fill_in 'session[password]', with: 'aaaaaa'
     click_on 'Log in'
   end
+
 end

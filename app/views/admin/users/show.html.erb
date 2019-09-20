@@ -1,34 +1,30 @@
 <h1>ユーザー詳細</h1>
 <div class="nav justify-content-end">
-  <%= link_to '一覧', admin_user_path, class: 'nav-link'%>
+  <%= link_to '一覧', admin_users_path, class: 'nav-link'%>
   <table class="table table-hover">
     <tbody>
       <tr>
-        <th><%= User.human_arribute_name(:id) %></th>
+        <th>ユーザID</th>
         <td><%= @user.id %></td>
       </tr>
       <tr>
-        <th><%= User.human_arribute_name(:name) %></th>
+        <th>ユーザ名</th>
         <td><%= @user.name %></td>
       </tr>
       <tr>
-        <th><%= User.human_arribute_name(:email) %></th>
+        <th>メールアドレス</th>
         <td><%= @user.email %></td>
       </tr>
       <tr>
-        <th><%= User.human_arribute_name(:admin) %></th>
-        <td><%= @user.admin %></td>
-      </tr>
-      <tr>
-        <th><%= User.human_arribute_name(:created_at) %></th>
+        <th>作成日</th>
         <td><%= @user.created_at %></td>
       </tr>
       <tr>
-        <th><%= User.human_arribute_name(:update_at) %></th>
-        <td><%= @user.update_at %></td>
+        <th>更新日</th>
+        <td><%= @user.updated_at %></td>
       </tr>
-      <td><%= link_to edit_admin_user_path(user), data: { confirm: '本当に編集していいですか？' }, class: 'btn btn-primary' %></td>
-      <td><%= link_to [:admin, user], method: :delete, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %></td>
+      <td><%= link_to '編集', edit_admin_user_path, data: { confirm: '本当に編集していいですか？' }, class: 'btn btn-primary' %></td>
+      <td><%= link_to '削除', [:admin, @user], method: :delete, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %></td>
     </tbody>
   </table>
 </div>

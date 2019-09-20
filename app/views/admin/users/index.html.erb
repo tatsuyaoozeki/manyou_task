@@ -6,23 +6,22 @@
   <table class="table table-hover">
     <thead class="thead-default">
       <tr>
-        <th><%= User.human_arribute_name(:name) %></th>
-        <th><%= User.human_arribute_name(:email) %></th>
-        <th><%= User.human_arribute_name(:admin) %></th>
-        <th><%= User.human_arribute_name(:created_at) %></th>
-        <th><%= User.human_arribute_name(:update_at) %></th>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <!-- <th>管理権限</th> -->
+        <th>作成日</th>
+        <th>更新日</th>
       </tr>
     </thead>
     <tbody>
-      <% @user.each do |user| %>
+      <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name, [:admin, user] %></td>
         <td><%= user.email %></td>
-        <td><%= user.admin? 'あり' : 'なし' %></td>
         <td><%= user.created_at %></td>
-        <td><%= user.update_at %></td>
-        <td><%= link_to edit_admin_user_path(user), data: { confirm: '本当に編集していいですか？' }, class: 'btn btn-primary' %></td>
-        <td><%= link_to [:admin, user], method: :delete, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %></td>
+        <td><%= user.updated_at %></td>
+        <td><%= link_to '編集', edit_admin_user_path(user), data: { confirm: '本当に編集していいですか？' }, class: 'btn btn-primary' %></td>
+        <td><%= link_to '削除', [:admin, user], method: :delete, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %></td>
       </tr>
       <% end %>
     </tbody>
