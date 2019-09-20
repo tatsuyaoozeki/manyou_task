@@ -1,5 +1,10 @@
 class Admin::UsersController < ApplicationController
+  def index
+    
+  end
+
   def new
+    @user = User.new
   end
 
   def edit
@@ -8,6 +13,5 @@ class Admin::UsersController < ApplicationController
   def show
   end
 
-  def index
-  end
+
 end
