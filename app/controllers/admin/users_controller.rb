@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :require_admin
   def index
     @users = User.includes(:task).all
   end
@@ -13,5 +14,10 @@ class Admin::UsersController < ApplicationController
   def show
   end
 
+  private
+
+  def require_admin
+    redirect_to root_url unless current_user.admin?
+  end
 
 end
