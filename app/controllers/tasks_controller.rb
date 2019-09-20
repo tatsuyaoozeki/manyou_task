@@ -64,7 +64,7 @@ class TasksController < ApplicationController
 
   def require_task
     unless logged_in?
-      reidirect_to new_session_path, notice: 'ログインしてください'
+      redirect_to new_session_path, notice: 'ログインしてください'
     end
   end
 
