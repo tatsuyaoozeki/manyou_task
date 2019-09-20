@@ -83,7 +83,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     all('table td')[6].click_link '詳細を確認する'
     expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
     expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
-    save_and_open_page
+    
   end
 
 end

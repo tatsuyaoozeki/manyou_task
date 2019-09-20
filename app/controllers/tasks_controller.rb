@@ -1,11 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :require_task
-  # before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
   PER = 8
 
   def index
-
     if params[:sort_expired]
       @tasks = Task.order(deadline: :desc)
     elsif params[:sort_priority]
@@ -68,11 +67,11 @@ class TasksController < ApplicationController
     end
   end
 
-  # def ensure_correct_user
-  #   @task = Task.find_by(id: params[:id])
-  #   if @task.user_id != @current_user.id
-  #     flash[:notice] = "権限がありません"
-  #     redirect_to tasks_path
-  #   end
-  # end
+  def ensure_correct_user
+    @task = Task.find_by(id: params[:id])
+    if @task.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to tasks_path
+    end
+  end
 end

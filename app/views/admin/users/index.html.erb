@@ -1,0 +1,29 @@
+<h1>ユーザー一覧</h1>
+
+<%= link_to 'ユーザ新規登録', new_admin_user_path, class: 'btn btn-primary' %>
+
+<div class="md-3">
+  <table class="table table-hover">
+    <thead class="thead-default">
+      <tr>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <!-- <th>管理権限</th> -->
+        <th>作成日</th>
+        <th>更新日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td class="light"><%= link_to user.name, [:admin, user] %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.updated_at %></td>
+        <td><%= link_to '編集', edit_admin_user_path(user), data: { confirm: '本当に編集していいですか？' }, class: 'btn btn-primary' %></td>
+        <td><%= link_to '削除', [:admin, user], method: :delete, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

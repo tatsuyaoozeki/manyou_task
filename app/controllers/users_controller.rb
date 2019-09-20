@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
   def new
-    if logged_in?
+    if logged_in?&.admin?
       redirect_to tasks_path, notice: 'すでにログインしています'
     else
       @user = User.new
@@ -26,5 +27,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def ensure_correct_user
+    @task = Task.find_by(id: params[:id])
+    if @task.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to tasks_path
+    end
   end
 end

@@ -1,0 +1,30 @@
+<h1>ユーザー詳細</h1>
+<div class="nav justify-content-end">
+  <%= link_to '一覧', admin_users_path, class: 'nav-link'%>
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <th>ユーザID</th>
+        <td><%= @user.id %></td>
+      </tr>
+      <tr>
+        <th>ユーザ名</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>作成日</th>
+        <td><%= @user.created_at %></td>
+      </tr>
+      <tr>
+        <th>更新日</th>
+        <td><%= @user.updated_at %></td>
+      </tr>
+      <td><%= link_to '編集', edit_admin_user_path, data: { confirm: '本当に編集していいですか？' }, class: 'btn btn-primary' %></td>
+      <td><%= link_to '削除', [:admin, @user], method: :delete, method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %></td>
+    </tbody>
+  </table>
+</div>
