@@ -12,12 +12,19 @@
       </div>
     <% end %>
 
+    <% if @admin %>
+    <%= link_to '一覧',admin_users_path,class: 'nav-link' %>
+
     <%= form_with(model: [:admin, @user], local: true) do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.label :admin, class: 'form-check-label' %>
+        <%= f.check_box :admin, class: 'form-check-input' %>
+        <%= f.label :admin %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>

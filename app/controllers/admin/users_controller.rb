@@ -1,12 +1,14 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  # before_action :require_admin
+  before_action :if_not_admin
+
   def index
     @users = User.includes(:tasks).all
   end
 
   def new
     @user = User.new
+    @admin=current_user.admin if current_user
   end
 
   def create
@@ -29,19 +31,44 @@ class Admin::UsersController < ApplicationController
   def update
     # @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: "ユーザー｢#{@user.name}｣を更新しました"
+      redirect_to admin_user_path, notice: "ユーザー｢#{@user.name}｣を更新しました"
     else
       render :edit
     end
   end
 
   def destroy
-    # @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_path, notice: "ユーザー｢#{@user.name}｣を削除しました"
+    if User.where(admin: true).count == 1 && @user.admin?
+      # @user = User.find(params[:id])
+      # @user.destroy
+      redirect_to admin_users_path, notice: "ユーザー｢#{@user.name}｣は削除できません"
+    elsif User.where(admin: true).count > 1 && current_user.id == @user.id
+      redirect_to new_session_path
+    else
+      @user.destroy
+      redirect_to admin_users_path, notice: "ユーザー｢#{@user.name}｣を削除しました"
+    end
   end
 
-
+  def change_admin
+    @user = User.find(params[:id])
+    if @user.admin == false
+      @user.admin = true
+      @user.save
+      flash[:success] = '管理者権限を与えました'
+      redirect_to admin_users_path
+    elsif @user.admin == true && @user.id == current_user.id
+      @user.admin = false
+      @user.save
+      flash[:success] = '管理者権限を無くしました'
+      redirect_to tasks_path
+    else
+      @user.admin = false
+      @user.save
+      flash[:success] = '管理者権限は与えられていません'
+      redirect_to admin_users_path
+    end
+  end
 
   private
 
@@ -53,8 +80,10 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # def require_admin
-  #   redirect_to root_url unless @current_user.admin?
-  # end
+  def if_not_admin
+    unless current_user.admin?
+      redirect_to tasks_path
+    end
+  end
 
 end

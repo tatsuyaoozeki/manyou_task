@@ -16,6 +16,7 @@ ja:
         high: 高
         medium: 中
         low: 低
+        admin: 管理者権限
     errors:
       models:
         task:
