@@ -13,17 +13,22 @@
     <% end %>
 
     <%= form_with(model: [:admin, @user], local: true) do |f| %>
+    <div class="">
+      <li><%= f.label :admin, class: 'form-check-label' %></li>
+      <li><%= f.check_box :admin, class: 'form-check-input' %></li>
+    </div>
+
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.hidden_field :password, class: 'form-control' %>
+
+      
+      <%= f.hidden_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Create user", class: 'btn btn-primary'%>
     <% end %>
