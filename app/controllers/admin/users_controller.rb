@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
-    @admin=current_user.admin if current_user
+    @admin = current_user.admin if current_user
   end
 
   def create
@@ -38,12 +38,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    if User.where(admin: true).count == 1 && @user.admin?
-      # @user = User.find(params[:id])
-      # @user.destroy
+    # @user.destroy
+    if User.where(admin: true).count <= 1 && @user.admin?
+      #@user = User.find(params[:id])
       redirect_to admin_users_path, notice: "ユーザー｢#{@user.name}｣は削除できません"
-    elsif User.where(admin: true).count > 1 && current_user.id == @user.id
-      redirect_to new_session_path
+    # elsif User.where(admin: true).count > 1 && current_user.id == @user.id
+    #   redirect_to new_session_path
     else
       @user.destroy
       redirect_to admin_users_path, notice: "ユーザー｢#{@user.name}｣を削除しました"
