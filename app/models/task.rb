@@ -5,6 +5,9 @@ class Task < ApplicationRecord
   enum priority: { high: 0, medium: 1, low: 2}
 
   belongs_to :user, dependent: :destroy
+  has_many :labels, through: :labelings
+  has_many :labelings, dependent: :destroy
+  accepts_nested_attributes_for :labels, allow_destroy: true
 
   scope :task, -> (params) {where('(name LIKE ?) AND (status::text LIKE ?)',
                                   "%#{params[:name]}%",

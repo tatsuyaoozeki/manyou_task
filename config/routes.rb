@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
   root to: 'tasks#index'
+  get 'sessions/new'
   resources :tasks
   resources :sessions, only: [:new, :create, :destroy]
   namespace :admin do
