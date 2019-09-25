@@ -15,13 +15,13 @@ class TasksController < ApplicationController
     else
       @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(PER)
     end
+    # @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
     @tasks = Task.where(user_id: current_user.id)
     @task = @tasks.page(params[:page]).per(PER)
   end
 
   def new
     @task = Task.new
-    @task.labelings.build
   end
 
   def create
@@ -55,7 +55,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content, :deadline, :status, :search, :priority, :page, which_label_ids: [])
+    params.require(:task).permit(:name, :content, :deadline, :status, :search, :priority, :page, label_ids: [] )
   end
 
   def set_task

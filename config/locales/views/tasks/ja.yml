@@ -19,6 +19,7 @@ ja:
       high: 高
       medium: 中
       low: 低
+      label: ラベル
     show:
       title: タスク詳細
       name: タスク名
@@ -34,6 +35,8 @@ ja:
       high: 高
       medium: 中
       low: 低
+      label: ラベル
+      category: カテゴリー
     new:
       new_title: タスクを作成する
     edit:
