@@ -5,17 +5,20 @@ class TasksController < ApplicationController
   PER = 8
 
   def index
+    @tasks = @current_user.tasks.where(user_id: @current_user.id)
     if params[:sort_expired]
-      @tasks = Task.order(deadline: :desc)
+      @tasks = @current_user.tasks.page(params[:page]).per(PER).order(deadline: :desc)
     elsif params[:sort_priority]
-      @tasks = Task.all.order(priority: :asc)
+      @tasks = @current_user.tasks.page(params[:page]).per(PER).order(priority: :asc)
     elsif params[:name]
       @tasks = Task.task(params)
-      # .where("name LIKE ?", "%#{ params[:name] }%").where('status::text LIKE ?', "%#{params[:status]}%")
+      # .where("name LIKE ?", "%#{ params[:name] }%").where('status::text LIKE ?', "%#{params[:status]}%").where("label")
+    elsif params[:label_id].present?
+      @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] })
     else
-      @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(PER)
+      @tasks = @current_user.tasks.page(params[:page]).per(PER).order(created_at: :desc)
     end
-    @tasks = Task.where(user_id: current_user.id)
+    # @tasks = Task.where(user_id: current_user.id)
     @task = @tasks.page(params[:page]).per(PER)
   end
 
@@ -54,7 +57,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content, :deadline, :status, :search, :priority, :page)
+    params.require(:task).permit(:name, :content, :deadline, :status, :search, :priority, :page, label_ids: [] )
   end
 
   def set_task

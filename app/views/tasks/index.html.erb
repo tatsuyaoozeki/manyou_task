@@ -3,10 +3,18 @@
     <%= text_field_tag :name, params[:search], :placeholder => "タスク名", class: "form-control", id: "sbox1" %>
     <div class="status"><%= t('.status') %></div>
     <%= select_tag :status, options_for_select([["", ""], ["未着手", "0"], ["作業中", "1"], ["完了", "2"]]), class: "status_sel" %>
-    <%= submit_tag 'search', :name => nil, :status => nil %>
+    <%# <%= select_tag :label_ids, options_for_select([["",""], ["ラベル0", "ラベル0"], ["ラベル1", "ラベル1"], ["ラベル2", "ラベル2"], ["ラベル3", "ラベル3"],
+                                                  ["ラベル4", "ラベル4"], ["ラベル5", "ラベル5"], ["ラベル6", "ラベル6"], ["ラベル7", "ラベル7"],
+                                                  ["ラベル8", "ラベル8"], ["ラベル9", "ラベル9"]])%>
+    <%= submit_tag 'search', :name => nil, :status => nil, :label_ids => nil %>
+  <% end %>
+
+  <%= form_with url: tasks_path, method: :get, local: true do |form| %>
+    <%= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
+    <%= form.submit 'Search', name: nil %>
   <% end %>
 </div>
-
+<div>
 <table class="table table-striped table-dark">
   <h1><%= t('.index_title') %></h1>
   <p><%= notice %></p>
@@ -33,6 +41,6 @@
   <% end %>
 </table>
 
-<%= link_to t('.create_task'), new_task_path %>
-<%= paginate @task %>
+  <%= link_to t('.create_task'), new_task_path %>
+  <%= paginate @task %>
 </div>

@@ -34,4 +34,25 @@ FactoryBot.define do
     user_id {3}
     user
   end
+
+  factory :label_task, class: Task do
+    name { 'ラベルユーザー１' }
+    content { 'Factoryで作ったデフォルトのコンテント２' }
+    deadline { '2019.09.20 19:47'}
+    status { "completed" }
+    priority { "low" }
+    user_id {1}
+  end
+
+  factory :second_label_task, class: Task do
+    name { 'ラベルユーザー２' }
+    content { 'Factoryで作ったデフォルトのコンテント２' }
+    deadline { '2019.09.20 19:47'}
+    status { "completed" }
+    priority { "low" }
+    user_id {2}
+  end
+
+
+
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :users
   end
   resources :users
+  resources :labelings
 
   get '*not_found' => 'application#routing_error'
   post '*not_found' => 'application#routing_error'

@@ -9,6 +9,7 @@
       <p><%= t('.priority') %>:<%= @task.priority_i18n %></p>
       <p><%= t('.created_at') %>:<%= l @task.created_at %></p>
       <p><%= t('.deadline_sort') %>:<%= l @task.deadline %></p>
+      <p><%= t('.category') %>:<%= @task.labels.pluck(:name) %></p>
     </div>
   </div>
 </div>
