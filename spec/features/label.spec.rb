@@ -31,7 +31,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     save_and_open_page
     select 'ラベル１', from: 'label_id'
     click_button 'search'
-    expect(page).to have_content ''
+    expect(page).to have_content 'ラベル１'
   end
 end
   # scenario "viewにてラベルが絞り込めるかのテスト" do
