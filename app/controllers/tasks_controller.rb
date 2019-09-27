@@ -27,8 +27,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = current_user.tasks.build(task_params)
-    if @task.save
+    @tasks = current_user.tasks.build(task_params)
+
+    if @tasks.save
       redirect_to tasks_path, notice: t('.success')
     else
       render 'new'
