@@ -28,6 +28,7 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(task_params)
+    binding.pry
     if @task.save
       redirect_to tasks_path, notice: t('.success')
     else
@@ -57,7 +58,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content, :deadline, :status, :search, :priority, :page, label_ids: [] )
+    params.require(:task).permit(:name, :content, :deadline, :status, :search, :priority, :page, :labelings_attributes: [:id, :task_id, :label_id], :label_ids: [] )
   end
 
   def set_task
