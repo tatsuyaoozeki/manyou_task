@@ -11,7 +11,7 @@ class Task < ApplicationRecord
 
   belongs_to :user, dependent: :destroy
 
-  has_many :labelings, dependent: :destroy
+  has_many :labelings, dependent: :destroy, inverse_of: :labels
   has_many :labels, through: :labelings
-  accepts_nested_attributes_for :labelings, allow_destroy: true
+  accepts_nested_attributes_for :labelings, allow_destroy: true, update_only: true
 end

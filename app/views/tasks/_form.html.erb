@@ -37,11 +37,11 @@
       </div>
       <div class="task_label">
         <% Label.all.each do |label| %>
-          <%= f.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+          <%= f.check_box :label_ids, { multiple: true, checked: @task.labels.find_by(id: label.id).present?, disabled: label[:disabled], include_hidden: false }, label[:id] %>
           <label><%= label.name %></label>
         <% end %>
       </div>
-
+      <p><%= link_to 'タスク一覧', tasks_path %></p>
       <%= f.submit %>
     <% end %>
     </div>
