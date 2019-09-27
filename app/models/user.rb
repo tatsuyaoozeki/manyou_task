@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
 
-  # before_destroy do
-  #   throw(:abort) if User.where(admin: true).count <= 1 && self.admin?
-  # end
+  before_destroy do
+    throw(:abort) if User.where(admin: true).count <= 1 && self.admin?
+  end
 end
