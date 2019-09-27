@@ -10,6 +10,7 @@
       <p><%= t('.created_at') %>:<%= l @task.created_at %></p>
       <p><%= t('.deadline_sort') %>:<%= l @task.deadline %></p>
       <p><%= t('.category') %>:<%= @task.labels.pluck(:name) %></p>
+      <p><%= link_to 'タスク一覧', tasks_path %></p>
     </div>
   </div>
 </div>
