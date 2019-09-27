@@ -8,9 +8,10 @@ class Task < ApplicationRecord
                                   "%#{params[:name]}%",
                                   "%#{params[:status]}%"
                                   )}
-  
+
   belongs_to :user, dependent: :destroy
 
   has_many :labelings, dependent: :destroy
   has_many :labels, through: :labelings
+  accepts_nested_attributes_for :labelings, allow_destroy: true
 end
