@@ -39,11 +39,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    @task = current_user.task.lagels.find(params[:id])
     if @task.update(task_params)
       redirect_to tasks_path, notice: t('.success')
     else
