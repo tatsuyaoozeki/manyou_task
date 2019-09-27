@@ -57,7 +57,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content, :deadline, :status, :search, :priority, :page, labelings_attributes: [:id, :task_id, :label_id], label_ids: [] )
+    params.require(:task).permit(:id, :name, :content, :deadline, :status, :search, :priority, :page, label_ids: [] )
   end
 
   def set_task
@@ -72,7 +72,7 @@ class TasksController < ApplicationController
 
   def ensure_correct_user
     @task = Task.find_by(id: params[:id])
-    if @task.user_id != @current_user.id
+    if @task.user.id != current_user.id
       flash[:notice] = "権限がありません"
       redirect_to tasks_path
     end
